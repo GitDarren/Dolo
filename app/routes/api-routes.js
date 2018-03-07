@@ -16,7 +16,7 @@ module.exports = function(app) {
   //   .catch(err=>res.json(err));
   // });
 
-  //======================Donation Routes========================
+  //====================Donation CRUD Routes=====================
   //=============================================================
 
     //GET route to return ALL Donations (need?)
@@ -25,27 +25,13 @@ module.exports = function(app) {
     // });
 
     // GET route for returning all Donations of a specific user
-    app.get("/api/donations/", function(req, res) {
+    app.get("/api/donations/:uid", function(req, res) {
+      //console.log(req.user.uid);
       db.Donation.findAll({
         where: {
-          //uid: req.user.id
-          uid: 3
-        }
-      })
-      .then(function(dbDonation) {
-        res.json(dbDonation);
-      });
-    });
-
-    // GET route for returning all Donations by category
-    app.get("/api/donations/:item_categoryID", function(req, res) {
-      db.Donation.findAll({
-        where: {
-
-          //item_categoryID: 2
-          item_categoryID: req.body.item_categoryID,
-          //uid: req.user.id
-
+          uid: req.user.id
+          //uid: 3
+          //uid: req.params.uid
         }
       })
       .then(function(dbDonation) {
@@ -59,33 +45,36 @@ module.exports = function(app) {
         name: req.body.name,
         description: req.body.description,
         uid: req.user.id,
+        //uid: 3,
         item_categoryID: req.body.item_categoryID,
         type: req.body.type
       }).then(dbDonation=>res.json(dbDonation))
-      
-
       // .catch(err=>res.json(err));
 
     });
 
-    // Get route for retrieving a donation to edit
+    //GET route for retrieving a donation to edit
     app.get("/api/donations/:id", function(req, res) {
-      db.Donation.findOne({
-        where: {
-          //id: req.body.id
-          id: req.params.id
-        }
-      })
-      .then(function(dbDonation) {
-        res.json(dbDonation);
-      });
+      db.Donation.findById({ where: {id: req.params.id} }).then(data=>res.json(data));
     });
 
+    // app.get("/api/donations/:id", function(req, res) {
+    //   //console.log(req.params.id);
+    //   //console.log(req.body);
+    //   db.Donation.findOne({
+    //     where: {
+    //       id: req.params.id
+    //     }
+    //   })
+    //   .then(function(dbDonation) {
+    //     res.json(dbDonation);
+    //   });
+    // });
 
     // PUT route for updating Donation
     app.put("/api/donations/:id", function(req, res) {
-      console.log(req.params.id);
-      console.log(req.body);
+      // console.log(req.params.id);
+      // console.log(req.body);
       db.Donation.update({
         description: req.body.description,
         name: req.body.name,
@@ -93,7 +82,7 @@ module.exports = function(app) {
       },
         {
           where: {
-            id: req.body.id
+            id: req.params.id
           }
         })
       .then(function(dbDonation) {
@@ -113,31 +102,28 @@ module.exports = function(app) {
       });
     });
 
-  //======================Request/Needs Routes=========================
+  //=============orgs can search donations by category=================
   //===================================================================
-
-  //GET route to return ALL requests/needs
-  // app.get("/api/requests", function(req, res) {
-  //   db.Request.findAll({}).then(dbRequest=>res.json(dbRequest));
-  // });
-
-   // GET route for returning all Donations of a specific user
-   app.get("/api/requests/", function(req, res) {
-    db.Request.findAll({
+  // GET route for returning all Donations by category
+  app.get("/api/donations/item_categoryID/:item_categoryID", function(req, res) {
+    db.Donation.findAll({
       where: {
-        //uid: req.user.id
-        uid: 2
+        //item_categoryID: 2
+        item_categoryID: req.params.item_categoryID
       }
     })
-    .then(function(dbRequest) {
-      res.json(dbRequest);
+    .then(function(dbDonation) {
+      res.json(dbDonation);
     });
   });
 
+  //=============donors can search requests by category================
+  //===================================================================
   // GET route for returning requests of a specific category
-  app.get("/api/requests/:item_categoryID", function(req, res) {
+  app.get("/api/requests/item_categoryID/:item_categoryID", function(req, res) {
     db.Request.findAll({
       where: {
+        //item_categoryID: 2
         item_categoryID: req.params.item_categoryID
       }
     })
@@ -146,11 +132,20 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a request to edit
-  app.get("/api/requests/:id", function(req, res) {
-    db.Request.findOne({
+  //====================Request/Needs CRUD Routes======================
+  //===================================================================
+
+  //GET route to return ALL requests/needs
+  // app.get("/api/requests", function(req, res) {
+  //   db.Request.findAll({}).then(dbRequest=>res.json(dbRequest));
+  // });
+
+   // GET route for returning all Donations of a specific user
+   app.get("/api/requests/:uid", function(req, res) {
+    db.Request.findAll({
       where: {
-        id: req.params.id
+        uid: req.user.id
+        //uid: 2
       }
     })
     .then(function(dbRequest) {
@@ -159,13 +154,29 @@ module.exports = function(app) {
   });
 
 
+  // Get route for retrieving a request to edit
+  app.get("/api/requests/:id", function(req, res) {
+    db.Request.findById(req.params.id).then(data=>res.json(data));
+  });
+
+  // app.get("/api/requests/:id", function(req, res) {
+  //   db.Request.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //   .then(function(dbRequest) {
+  //     res.json(dbRequest);
+  //   });
+  // });
+
+
   //CREATE Request
   app.post("/api/requests", function(req, res) {
     db.Request.create({
       name: req.body.name,
       description: req.body.description,
-       //uid: req.body.uid,
-       uid: 3,
+      uid: req.user.uid,
       item_categoryID: req.body.item_categoryID,
       type: req.body.type
     }).then(dbRequest=>res.json(dbRequest))
@@ -173,11 +184,11 @@ module.exports = function(app) {
   });
 
   // PUT route for updating request
-  app.put("/api/requests", function(req, res) {
+  app.put("/api/requests/:id", function(req, res) {
     db.Request.update(req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       })
     .then(function(dbRequest) {
@@ -185,9 +196,6 @@ module.exports = function(app) {
     });
   });
   
-  app.get("/api/requests/:id", function(req, res) {
-    db.Request.findById(req.params.id).then(data=>res.json(data));
-  });
 
   // DELETE route for deleting request
   app.delete("/api/requests/:id", function(req, res) {
