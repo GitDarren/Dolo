@@ -30,10 +30,6 @@ module.exports = function(app) {
       db.Donation.findAll({
         where: {
           uid: req.user.id
-<<<<<<< HEAD
-          //uid: 3
-          //uid: req.params.uid
-=======
         }
       })
       .then(function(dbDonation) {
@@ -50,7 +46,6 @@ module.exports = function(app) {
           item_categoryID: req.body.item_categoryID,
           //uid: req.user.id
 
->>>>>>> 8d551407f9ce7e74d14f2725bf2f11e56f6d7708
         }
       })
       .then(function(dbDonation) {
@@ -127,13 +122,8 @@ module.exports = function(app) {
   app.get("/api/donations/item_categoryID/:item_categoryID", function(req, res) {
     db.Donation.findAll({
       where: {
-<<<<<<< HEAD
         //item_categoryID: 2
         item_categoryID: req.params.item_categoryID
-=======
-        uid: req.user.id
-        // uid: 2
->>>>>>> 8d551407f9ce7e74d14f2725bf2f11e56f6d7708
       }
     })
     .then(function(dbDonation) {
