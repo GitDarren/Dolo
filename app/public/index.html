@@ -63,13 +63,17 @@
       margin-top: 5rem;
       margin-bottom: 5rem;
     }
+    #box-signin {
+      max-height: 225px;
+      min-height: 225px;
+    }
   </style>
 </head>
 <body>
 
-  <section class="hero is-medium is-bold">
+  <section class="hero is-medium is-bold is-mobile">
     <!-- Navbar start -->
-    <div class="hero-head is-light">
+    <div class="hero-head is-light is-mobile">
       <nav class="navbar border-shadow">
         <div class="container">
           <div class="navbar-brand">
@@ -84,7 +88,7 @@
           </div>
 
           <!-- Donation tab -->
-          <div id="navbarMenu" class="navbar-menu">
+          <div id="navbarMenu" class="navbar-menu is-mobile">
             <div class="navbar-end">
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-item">
@@ -105,7 +109,7 @@
             </div>
 
             <!-- Organization tab -->
-            <div class="navbar">
+            <div class="navbar is-mobile">
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-item">
                     Organizations
@@ -125,7 +129,7 @@
               </div>
 
           <!-- About tab -->
-              <a class="navbar-item" href="./about.html">
+              <a class="navbar-item" href="./index.html">
                 About Us
               </a>
               <span class="navbar-item">
@@ -151,7 +155,7 @@
     </div>
     <!-- Navbar end -->
 
-    <div class=" hero is-info" >
+    <div class="hero is-info is-mobile">
       <div class="container has-text-centered is-info" id="hero-margin">
         <h1 class="title" id="main-title">
           We Make Donating Simple 
@@ -164,7 +168,7 @@
             <div class="section-body">
               <div class="columns is-centered">
                 <div class="column is-4">
-                    <div class="box hero border-shadow is-signup">
+                    <div class="box hero border-shadow is-signup" id="box-signin">
                         <div class="box-body">
                             <span class="icon">
                                 <i class="fa fa-user fa-lg" aria-hidden="true"></i>
@@ -179,7 +183,7 @@
                       </div>
                 </div> 
                 <div class="column is-4">
-                  <div class="box hero border-shadow is-signup ">
+                  <div class="box hero border-shadow is-signup" id="box-signin">
                     <div class="box-body">
                         <span class="icon">
                             <i class="fa fa-users fa-lg" aria-hidden="true"></i>
@@ -206,8 +210,8 @@
   </section>
 
   <!-- Experimental Container -->
-  <section class="section app hero is-light">
-      <div class="tile is-ancestor">
+  <section class="section app hero is-light is-mobile">
+      <div class="tile is-ancestor is-mobile">
       <div class="tile is-vertical">
         <div class="tile">
           <div class="tile is-parent is-vertical">
@@ -238,13 +242,13 @@
       </div>
       </div>
 
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor is-mobile">
         <div class="tile is-parent">
         <article class="tile border-shadow is-child notification is-info stat-tile">
           <div class="level">
             <div class="column level-left">
-              <p class="title">Donation Location <strong>Newsletter</strong></p>
-              <p class="subtitle">Get notified when we launch!</p>
+              <p class="title has-text-white">Donation Location <strong>Newsletter</strong></p>
+              <p class="subtitle has-text-white">Get notified when we launch!</p>
             </div>
             <div class="colum level-right">
               <form>
@@ -252,7 +256,7 @@
                   <div class="control has-icons-left is-medium">
                     <input type="email" value="" name="email" class="input is-flat required email" placeholder="email address" required="">
                     <span class="icon is-small is-left">
-                      <svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg><!-- <i class="fas fa-envelope"></i> -->
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
                     </span>
                   </div>
                   <div class="control">
@@ -270,7 +274,7 @@
         </div>
         <div class="tile is-parent is-4">
         <article class="tile border-shadow is-child notification is-info has-text-centered stat-tile">
-            <p class="title">Follow Us!</p>
+            <p class="title has-text-white">Follow Us!</p>
               <p><i class="fa fa-twitter fa fa-2x"></i></p>
           </article>
         </div>
@@ -280,8 +284,8 @@
 <!-- End section -->
 
 </section>
-  <footer class="footer hero is-white">
-    <div class="container">
+  <footer class="footer hero is-white is-mobile">
+    <div class="container is-mobile">
       <div class="content has-text-centered">
         <p>
           <strong>Donation Location</strong> Copyright 2018  
@@ -326,7 +330,7 @@
         <div class="column is-quarter">
           <ul>
             <li><strong>Contact</strong></li>
-            <li>+1 (361-944-05514)</li>
+            <li>+1 (321-922-02122)</li>
             <li>
               <a href="mailto:contact@dolo.com">contact@donation_location.com</a>
             </li>
