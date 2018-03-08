@@ -1,0 +1,31 @@
+{
+  "name": "dolo",
+  "version": "1.0.0",
+  "description": "Donation Location App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitDarren/Dolo.git"
+  },
+  "author": "Darren Smith, Greg Church, Brandon Shapiro, Preston McNabb, Brandon Cowart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GitDarren/Dolo/issues"
+  },
+  "homepage": "https://github.com/GitDarren/Dolo#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "mysql2": "^1.5.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.33.4"
+  }
+}

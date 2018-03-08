@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organization Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Bulma Version 0.6.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+  <style>
+    #dolo {
+      object-fit: cover;
+      height: 60px;
+      width: 100%;
+    }
+
+    .signup {
+      margin-top: 1rem;
+      margin-left: 10rem;
+      margin-right: 0;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar start -->
+  <div class="hero-head is-light">
+    <nav class="navbar border-shadow">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="logo" href="./index.html">
+            <img src="assets/img/dolo.png" id="dolo" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+
+        <!-- Donation tab -->
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-item">
+                Donate
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="./donate.html">
+                  Donor Profile
+                </a>
+                <a class="navbar-item" href="./org-search.html">
+                  Search Organizations
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Organization tab -->
+          <div class="navbar">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-item">
+                Organizations
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="./organization.html">
+                  Org Profile
+                </a>
+                <a class="navbar-item" href="./donation-search.html">
+                  Search Donations
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- About tab -->
+          <a class="navbar-item" href="./about.html">
+            About Us
+          </a>
+          <span class="navbar-item">
+            <a class="button is-info is-outlined is-small" href="./login.html">
+              <span class="icon">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </span>
+              <span id="signin">Sign In</span>
+            </a>
+          </span>
+          <span class="navbar-item">
+            <a class="button is-info is-outlined is-small" href="./index.html">
+              <span class="icon">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </span>
+              <span id="signout">Sign Out</span>
+            </a>
+          </span>
+        </div>
+      </div>
+  </div>
+  </nav>
+  </div>
+  <!-- Navbar end -->
+
+
+  <!-- Start Colums -->
+  <div class="columns">
+    <div class="column is-6">
+      <div class="section has-text-centered">
+        <h2 class="title">Create An Organization Profile!</h2>
+      </div>
+
+      <!-- Form Begin -->
+      <form class="signup" id="signup">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Organization*</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input is-success" type="text" id="org-name-input" placeholder="Title">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-users"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Email*</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left has-icons-right">
+                <input class="input is-success" type="email" id="email-input" placeholder="example@email.com">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Password*</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left has-icons-right">
+                <input class="input is-success" type="password" id="password-input" placeholder="abc123!#$">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+              <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">City*</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control is-expanded ">
+                        <input class="input is-success" type="text" id="city-input" placeholder="Austin">
+                      </p>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">State*</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control is-expanded ">
+                            <input class="input is-success" type="text" id="state-input" placeholder="Texas">
+                          </p>
+                        </div>
+                        </div>
+                      </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">Number</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <div class="field has-addons">
+                <p class="control">
+                  <a class="button is-static">
+                    +1
+                  </a>
+                </p>
+                <p class="control is-expanded">
+                  <input class="input" type="tel" id="phone-input" placeholder="Your phone number">
+                </p>
+              </div>
+              <p class="help">Please include your area code. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Zip*</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded ">
+                <input class="input is-success" type="text" id="zip-input" placeholder="78701">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Organization Category</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select id="org-category-input">
+                    <option>Nonprofit</option>
+                    <option>Healthcare</option>
+                    <option>Community Needs</option>
+                    <option>Animal/Pets</option>
+                    <option>Political</option>
+                    <option>Homeless Care</option>
+                    <option>Food Bank</option>
+                    <option>After School Program</option>
+                    <option>Minority Outreach</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Website*</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input is-success" type="text" id="org-web-input" placeholder="www.dolo.io">
+                <!-- <span class="icon is-small is-left">
+                        <i class="fa fa-users"></i>
+                      </span> -->
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Organization Description</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea" id="org-desc-input" placeholder="Description"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="help has-text-success">
+          <strong>* Fields in green are required</strong>
+        </p>
+        <br>
+
+        <div class="field is-horizontal">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox"> I agree to the
+              <a href="#">terms and conditions</a>
+            </label>
+          </div>
+        </div>
+
+        <div class="field is-horizontal is-grouped">
+          <div class="control">
+            <button class="button is-info" type="submit">Sign Up</button>
+          </div>
+          <div class="control">
+            <button class="button is-text">Cancel</button>
+          </div>
+        </div>
+        <!-- Form end -->
+      </form>
+    </div>
+
+    <!-- Right Colum -->
+    <div class="column is-6">
+      <div class="section has-text-centered">
+        <h3 class="title">Wanting to sign up as an individual donor? Click here! </h3>
+      </div>
+      <div class="has-text-centered">
+        <a class="button is-info is-medium " href="./signup.html">Create a Profile</a>
+      </div>
+    </div>
+
+    <!-- End Left Column -->
+  </div>
+
+  <script type="text/javascript" src="js/orgsignup.js"></script>
+
+</body>
+
+</html>

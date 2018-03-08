@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <!-- Bulma Version 0.6.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <style>
+    html,body {
+    font-family: 'Open Sans', serif;
+    font-size: 14px;
+    font-weight: 300;
+    }   
+    
+    #dolo {
+      object-fit: cover;
+      height: 75px;
+      width: 100%;
+    }
+  
+    .hero.is-success {
+    background: #F2F6FA;
+    }
+    .hero .nav, .hero.is-success .nav {
+    -webkit-box-shadow: none;
+     box-shadow: none;
+    }
+    .box {
+    margin-top: 2rem;
+    }
+
+    input {
+    font-weight: 300;
+    }
+    p {
+    font-weight: 700;
+    }
+    p.subtitle {
+    padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero is-fullheight">
+<!-- Navbar start -->
+<div class="hero-head is-light">
+    <nav class="navbar border-shadow">
+      <div class="container">
+        <div class="navbar-brand">
+            <a class="logo" href="./index.html">
+            <img src="assets/img/dolo.png" id="dolo" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+
+        <!-- Donation tab -->
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-item">
+                Donate
+               </a>
+               <div class="navbar-dropdown">
+                  <a class="navbar-item" href="./donate.html">
+                    Donor Profile
+                  </a>
+                  <a class="navbar-item" href="./org-search.html">
+                    Search Organizations
+                  </a>
+                </div>
+              </div>
+          </div>
+
+          <!-- Organization tab -->
+          <div class="navbar">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item">
+                  Organizations
+                 </a>
+                 <div class="navbar-dropdown">
+                    <a class="navbar-item" href="./organization.html">
+                      Org Profile
+                    </a>
+                    <a class="navbar-item" href="./donation-search.html">
+                      Search Donations
+                    </a>
+                  </div>
+                </div>
+            </div>
+
+        <!-- About tab -->
+            <a class="navbar-item" href="./about.html">
+              About Us
+            </a>
+            <span class="navbar-item">
+              <a class="button is-info is-outlined is-small" href="./login.html">
+                <span class="icon">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </span>
+                <span id="signin">Sign In</span>
+              </a>
+            </span>
+            <span class="navbar-item">
+              <a class="button is-info is-outlined is-small" href="./index.html">
+                <span class="icon">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </span>
+                <span id="signout">Sign Out</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Navbar end -->
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h4 class="title has-text-grey">Login</h4>
+                    <p class="subtitle has-text-grey">Please login to proceed.</p>
+            <div class="box">
+                <form class="login">
+                    <div class="field">
+                        <label class="label has-text-left">Email</label>
+                        <div class="control">
+                            <input class="input is-large" type="text" id="email-input" placeholder="@email.com">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label has-text-left">Password</label>
+                        <div class="control">
+                            <input class="input is-large" type="password" id="password-input" placeholder="abc123">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                              Remember me
+                        </label>
+                    </div>
+                    <br>
+                    <button type="submit" class="button is-block is-info is-large is-fullwidth">Login</button>
+                    <br>
+                  
+                </form>
+                <hr>
+                </div>
+                <p class="has-text-grey">
+                        <a href="./signup.html">Create Profile</a> &nbsp;·&nbsp;
+                        <a href="./login.html">Forgot Password</a> &nbsp;·&nbsp;
+                        <a href="./index.html">Home</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+        </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+
+</body>
+</html>

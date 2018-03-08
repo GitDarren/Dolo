@@ -1,0 +1,53 @@
+ORG ADD:
+{
+  "name": "Yellow Bike Project",
+  "description": "make bikes",
+  "web": "http://austinyellowbike.org/",
+  "org_categoryID": 6
+}
+
+USER ADD:
+-org
+{
+  "username": "org_tester1",
+  "password": "Password1",
+  "email": "test@test.com",
+  "donor": 0,
+  "name": "Tester McTesterson",
+  "phone": "512-867-5309",
+  "street": "123 Lake Austin Blvd",
+  "city": "Austin",
+  "state": "TX",
+  "zip": 78753,
+  "orgId": 1
+}
+-donor
+{
+  "username": "donor_tester1",
+  "password": "Password1",
+  "email": "test1@test.com",
+  "name": "Tester McTesterson",
+  "phone": "512-867-5309",
+  "street": "123 Lake Austin Blvd",
+  "city": "Austin",
+  "state": "TX",
+  "zip": 78753
+}
+
+DONATION ADD
+{
+  "name": "bike",
+  "description": "road bike in good condition",
+  "uid": 2,
+  "item_categoryID": 6,
+  "type": "material"
+}
+
+REQUEST ADD
+{
+  "name": "bike",
+  "description": "make bikes",
+  "uid": 1,
+  "item_categoryID": 7,
+  "type": "service"
+}

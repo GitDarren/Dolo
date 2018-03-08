@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organization Profile Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <!-- Bulma Version 0.6.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <style>
+    #dolo {
+      object-fit: cover;
+      height: 60px;
+      width: 100%;
+    }
+    #title {
+      font-size: 25px;
+    }
+    #avatar{
+    display: block;
+    height: auto;
+    width: 35%;
+    }
+    .card-table {
+    max-height: 445px;
+    overflow-y: scroll;
+    }
+    article {
+      margin-right: 1rem;
+      margin-left: 1rem;
+    }
+    
+  </style>
+</head>
+<body>
+
+<!-- Navbar start -->
+<div class="hero-head is-light">
+    <nav class="navbar border-shadow">
+      <div class="container">
+        <div class="navbar-brand">
+            <a class="logo" href="./index.html">
+            <img src="assets/img/dolo.png" id="dolo" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+
+        <!-- Donation tab -->
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-item">
+                Donate
+               </a>
+               <div class="navbar-dropdown">
+                  <a class="navbar-item" href="./donate.html">
+                    Donor Profile
+                  </a>
+                  <a class="navbar-item" href="./org-search.html">
+                    Search Organizations
+                  </a>
+                </div>
+              </div>
+          </div>
+
+          <!-- Organization tab -->
+          <div class="navbar">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item">
+                  Organizations
+                 </a>
+                 <div class="navbar-dropdown">
+                    <a class="navbar-item" href="./organization.html">
+                      Org Profile
+                    </a>
+                    <a class="navbar-item" href="./donation-search.html">
+                      Search Donations
+                    </a>
+                  </div>
+                </div>
+            </div>
+
+        <!-- About tab -->
+            <a class="navbar-item" href="./about.html">
+              About Us
+            </a>
+            <span class="navbar-item">
+              <a class="button is-info is-outlined is-small" href="./login.html">
+                <span class="icon">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </span>
+                <span id="signin">Sign In</span>
+              </a>
+            </span>
+            <span class="navbar-item">
+              <a class="button is-info is-outlined is-small" href="./index.html">
+                <span class="icon">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </span>
+                <span id="signout">Sign Out</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Navbar end -->
+
+      <!-- Begin Profile -->
+      <section class="section main hero is-light">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-3">
+                <div class="card is-fullwidth ">
+                    <header class="card-header hero is-info">
+                        <p class="card-header-title has-text-white">
+                            <a>Welcome to Donation Location!</a>
+                        </p>
+                      </header>
+                  <div class="card-content">
+                    <a class="card-avatar">
+                      <img src="assets/img/org.png" class="card-avatar-img" id="avatar">
+                    </a>
+                    <br>
+                    <div class="card-user">
+                      <div class="card-user-name" id="organization">
+                        <p>Organization: <a class="org-name"></a></p>
+                      </div>
+                      <div class="card-user-name" id="name">
+                        <p>User: <a class="user-name"></a></p>
+                      </div>
+                      <div class="card-user-city" id="website">
+                          <p>Website: <a class="user-website"></a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="spacer"></div>
+                <div class="card is-fullwidth">
+                    <header class="card-header hero is-info">
+                      <p class="card-header-title has-text-white">
+                        <strong>Our Contact: </strong>
+                      </p>
+                    </header>
+                    <div class="card-content">
+                    <p><a href="#">Email: </a><small><span class="org-email"></span></small></p>
+                    <p><a href="#">Phone: </a><small><span class="org-phone"></span></small></p>
+                    <p><a href="#">Street: </a><small><span class="org-street"></span></small></p>
+                    <p><a href="#">City: </a><small><span class="org-city"></span></small></p>
+                    <p><a href="#">State: </a><small><span class="org-state"></span></small></p>
+                    <p><a href="#">Zip: </a><small><span class="org-zip"></span></small></p>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Middle Sec -->
+              <div class="column is-6">
+                <div class="box">
+                    <p class="has-text-centered" id="title"><strong>Your Requested Donations</strong></p>
+                    <div class="card-table">
+                  <article class="media">
+                    <div class="media-left">
+                    </div>
+                    <div class="media-content">
+                      <nav class="level">
+                        <div class="level-left">
+                          <a class="level-item">
+                            <span class="icon is-2x"><i class="fa fa-angle-down"></i></span>
+                          </a>
+                        </div>
+                      </nav>
+                    </div>
+                  </article>
+
+                  <!-- dynamically load in user's donations -->
+                  <div class="requests-container">   </div>
+                  <!-- <article class="media">
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <strong>Needed Item:</strong> <small>Kitchen Pots and Pans</small><small style="float:right;">1m</small>
+                            <br>
+                            <small>We are in need of a few more for the kitchen. Need at least two pots and two pans. The bigger the better. </small>
+                          </p>
+                        </div>
+                        <nav class="level">
+                          <div class="level-left">
+                            <a class="level-item">
+                              <span class="icon is-small"><i class="fa fa-edit"></i></span>Edit
+                            </a>
+                            
+                          </div>
+                          <div class="level-right">
+                              <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-trash"></i></span>Delete
+                              </a>
+                            </div>
+                        </nav>
+                      </div>
+                    </article> -->
+                    
+                        
+                      <!-- End table -->
+                     </div>
+                </div>
+              </div>
+
+            <!-- Post box -->
+              <div class="column is-3">
+                <div class="card is-fullwidth" id="request-form">
+                    <header class="card-header hero is-info">
+                      <p class="card-header-title has-text-white">
+                          Post New Request
+                      </p>
+                    </header>
+                      <div class="card-content">
+                        <!-- Item Name -->
+                          <div class="field">
+                              <label class="label">Need</label>
+                              <div class="control">
+
+                                <input class="input" type="text" id="request-name" placeholder="Item Name">
+
+                              </div>
+                            </div>
+
+                        <!-- Category -->
+                              <div class="field">
+                                    <label class="label">Category</label>
+                                    <div class="control">
+                                      <div class="select">
+                                        <select class="form-control" id="request-category">
+                                            <option value="1">Clothes</option>
+                                            <option value="2">Food</option>
+                                            <option value="3">Furniture</option>
+                                            <option value="4">Clothes</option>
+                                            <option value="5">Food</option>
+                                            <option value="6">Furniture</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                            <!-- Description -->
+                              <div class="field">
+                                  <label class="label">Description</label>
+                                    <div class="control">
+                                      <textarea class="textarea" id="request-description" placeholder="Textarea"></textarea>
+                                    </div>
+                                </div>
+                            <!-- image -->
+                            <div class="field">
+                                <label class="label">Upload Image</label>
+                                <div class="file has-name is-small is-info">
+                                    <label class="file-label">
+                                      <input class="file-input" type="file" id="request-image" name="resume">
+                                      <span class="file-cta">
+                                        <span class="file-icon">
+                                          <i class="fa fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                          Choose a file…
+                                        </span>
+                                      </span>
+                                      <span class="file-name">
+                                        Screen Shot 2017-07-29 at 15.54.25.png
+                                      </span>
+                                    </label>
+                                  </div>
+                            </div>
+                            
+                            
+                            <div class="level-right">
+                            <a class="button is-info is-outlined is-small" href="">
+                              <span class="icon">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                              </span>
+                            <span id="signin">Post</span>
+                          </a>
+                        </div>
+                       
+                      </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+          </div>
+        </section>
+
+    <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="content has-text-centered">
+            <p>
+              <strong>Donation Location</strong> Copyright 2018  
+            </p>
+                <a href="https://bulma.io">
+                  <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+                </a>
+          </div>
+        </div>
+        <div class="container">
+          <div class="columns">
+            <div class="column is-quarter">
+              <ul>
+                <li><strong>Web Site</strong></li>
+                <li>
+                  <a href="./signup.html" class="">Sign Up</a>
+                </li>
+                <li>
+                    <a href="./login.html" class="">Log In</a>
+                  </li>
+                <li>
+                  <a href="./about.html" class="">About Us</a></li>
+                <li>
+                  <a href="./about.html" class="">Meet the Team</a>
+                </li>
+              </ul>
+            </div>
+            <div class="column is-quarter">
+              <ul>
+                <li><strong>Social Links</strong></li>
+                <li>
+                  <a href="https://twitter.com/" target="_blank">Twitter</a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/" target="_blank">Linkedin</a>
+                </li>
+                <li>
+                  <a href="https://github.com/" target="_blank">Facebook</a>
+                </li>
+              </ul>
+            </div>
+            <div class="column is-quarter">
+              <ul>
+                <li><strong>Contact</strong></li>
+                <li>+1 (361-944-05514)</li>
+                <li>
+                  <a href="mailto:contact@dolo.com">contact@donation_location.com</a>
+                </li>
+                <li>2405 Robert Dedman Dr. Austin, Texas, 78751</li>
+              </ul>
+            </div>
+    
+            </div>
+          </div>
+      </footer>
+
+  <!-- Custom Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+  <script src="js/org-profile.js" type="text/javascript"></script>
+
+</body>
+
+</html>
