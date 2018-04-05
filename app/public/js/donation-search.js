@@ -35,9 +35,9 @@ $(document).ready(function () {
   // grab donations by category from database and updates the view
   //***Needs to be by catergoryID***
   // if there are none, call displayEmptyDonations to show message to user
-  function getDonations(categoryID) {
-    console.log("in function getDonations - by category: " + categoryID)
-    $.get("/api/donations/" + categoryID, function (data) {
+  function getDonations(item_categoryID) {
+    console.log("in function getDonations - by category: " + item_categoryID)
+    $.get("/api/donations/" + item_categoryID, function (data) {
       console.log("Donations::: ", data);
       donations = data;
       console.log(donations);
@@ -70,7 +70,7 @@ $(document).ready(function () {
   //===========================================
   function createNewDonationRow(donation) {
     console.log("donation object " + donation.name);
-    console.log("donation id " + donation.id);
+    console.log("donation id " + donation.item_categoryID);
 
      var $newDonationRow =  $('#available-donations-container').append(`
           <article class="media">

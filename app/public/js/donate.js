@@ -31,6 +31,7 @@ $(document).ready(function () {
   //fix later TODO
   var currentId;
   
+  var newDonation;
   // Sets a flag for whether or not we're updating a donation to be false initially
   var updating = false;
 
@@ -38,19 +39,19 @@ $(document).ready(function () {
    var donorUID = 3;
 
   //do we have a current user?
-  function getUserID() {
-    $.get("/api/user_data", function (data) {
-      console.log("do we have user data? : ", data);
-      donorUID = data.id;
-    });
-  }
-  getUserID();
+  // function getUserID() {
+  //   $.get("/api/user_data", function (data) {
+  //     console.log("do we have user data? : ", data);
+  //     donorUID = data.id;
+  //   });
+  // }
+  // getUserID();
   
  
 
   // grabs donations from the database and updates the view
   // if there are none, call displayEmptyDonations to show message to user
-  function getDonations() {
+  function getDonations(donorUID) {
     $.get("/api/donations/" + donorUID, function (data) {
       console.log("Donations", data);
       console.log(data.id);
@@ -67,7 +68,7 @@ $(document).ready(function () {
 
   // Getting the list of user's donations
   //=====================================
-  getDonations();
+  getDonations(donorUID);
 
   // initializeDonationsRows handles appending all of our constructed donation HTML inside
   // myDonationsContainer
@@ -85,7 +86,7 @@ $(document).ready(function () {
   // need to work in image thumbnail
   //===========================================
   function createNewDonationRow(donation) {
-    console.log("donation object " + donation);
+    console.log("donation object " + donation.name);
     console.log("donation id " + donation.id);
 
      var $newDonationRow =  $('.donations-container').append(`
@@ -141,6 +142,8 @@ $(document).ready(function () {
     console.log("name " + nameInput.val() );
     console.log("desc " + descriptionInput.val() );
     console.log("category id " + donationCategorySelect.val() );
+    console.log("donation id " + currentId );
+
 
     event.preventDefault();
     // Wont submit the donation if we are missing a name or description
@@ -149,12 +152,12 @@ $(document).ready(function () {
       return;
     }
     // Constructing a newDonation object to hand to the database
-    var newDonation = {
+    newDonation = {
       name: nameInput.val(),
       description: descriptionInput.val(),
       item_categoryID: parseInt(donationCategorySelect.val()),
       type: "material",
-      id: currentId,
+      id: currentId
       //image: imgUpload //??????????????????????????
     };
 
@@ -164,12 +167,16 @@ $(document).ready(function () {
     // If we're updating a donation run updateDonation
     // Otherwise run submitDonation to create a new donation
     if (updating) {
+      console.log(updating);
 
       console.log("donation ID = " + currentId);
       updateDonation(newDonation);
+      console.log("we just updated");
+
     }
     else {
       submitDonation(newDonation);
+      console.log('adding new donation');
     }
   
 });
@@ -181,11 +188,12 @@ $(document).ready(function () {
   // Submit a new donation
   function submitDonation(Donation) {
     console.log("function submitDonation is running");
-    $.post("/api/donations", Donation, function() {
+    $.post("/api/donations/" + 3, Donation, function() {
+      console.log("donor ID " + donorUID);
       // call getDonations to print all user donations to DOM
       nameInput.val("");
       descriptionInput.val("");
-      getDonations();
+      getDonations(donorUID);
     });
   }
   // ======================END - NEW DONATION========================
@@ -195,8 +203,7 @@ $(document).ready(function () {
   //==========================UPDATE DONATION========================
   // figure out donation id we want to edit 
   function handleDonationEdit() {
-    console.log($(this).attr("data"));
-    // var editThisDonationId = $(this).data("id");
+    console.log("this is the itemID " + $(this).attr("data"));
     var editThisDonationId = $(this).attr("data")
     getDonationData(editThisDonationId);
      
@@ -204,15 +211,15 @@ $(document).ready(function () {
 
   // Gets donation data if we're editing
   function getDonationData(id) {
-    console.log("Updating ID # id " + id);
-    $.get("/api/donations/" + id, function(data) {
+    console.log("Updating ID # " + id);
+    $.get("/api/donations/id/" + id, function(data) {
       if (data) {
-        console.log("this is the donation to update", data);
+        console.log(data);
         
-        // If this donation exists, prefill our forms with its data
-        // console.log("name ", data );
-        // console.log("desc " + data.description );
-        // console.log("category id " + data.item_categoryID );
+        //If this donation exists, prefill our forms with its data
+        console.log(data );
+        console.log("desc " + data.description );
+        console.log("category id " + data.item_categoryID );
 
         nameInput.val(data.name);
         descriptionInput.val(data.description);
@@ -230,15 +237,17 @@ $(document).ready(function () {
   function updateDonation(item) {
     console.log("ITEM is below");
     console.log(item);
+    console.log("this is the donation id " + item.id);
     $.ajax({
       method: "PUT",
-      url: "/api/donations/:" + item.currentId,
+      url: "/api/donations/id/" + item.id,
       data: item
     })
     .then(function() {
-      getDonations();
+      getDonations(donorUID);
       nameInput.val("");
       descriptionInput.val("");
+      currentId = null;
     });
   }
   //========================== END - UPDATE DONATION========================
@@ -263,7 +272,7 @@ $(document).ready(function () {
       url: "/api/donations/" + id
     })
       .then(function () {
-        getDonations();
+        getDonations(donorUID);
       });
   }
   //==============================END - DELETE DONATION========================

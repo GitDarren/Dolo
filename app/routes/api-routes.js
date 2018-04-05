@@ -29,7 +29,7 @@ module.exports = function(app) {
       //console.log(req.user.uid);
       db.Donation.findAll({
         where: {
-          uid: req.user.id
+          uid: req.params.uid
         }
       })
       .then(function(dbDonation) {
@@ -43,7 +43,7 @@ module.exports = function(app) {
         where: {
 
           //item_categoryID: 2
-          item_categoryID: req.body.item_categoryID,
+          item_categoryID: req.params.item_categoryID
           //uid: req.user.id
 
         }
@@ -54,11 +54,13 @@ module.exports = function(app) {
     });
 
     // CREATE a donation
-    app.post("/api/donations", function(req, res) {
+    app.post("/api/donations/:uid", function(req, res) {
+      console.log("test");
+      console.log(req.body);
       db.Donation.create({
         name: req.body.name,
         description: req.body.description,
-        uid: req.user.id,
+        uid: req.params.uid,
         //uid: 3,
         item_categoryID: req.body.item_categoryID,
         type: req.body.type
@@ -68,25 +70,25 @@ module.exports = function(app) {
     });
 
     //GET route for retrieving a donation to edit
-    app.get("/api/donations/:id", function(req, res) {
-      db.Donation.findById({ where: {id: req.params.id} }).then(data=>res.json(data));
-    });
-
     // app.get("/api/donations/:id", function(req, res) {
-    //   //console.log(req.params.id);
-    //   //console.log(req.body);
-    //   db.Donation.findOne({
-    //     where: {
-    //       id: req.params.id
-    //     }
-    //   })
-    //   .then(function(dbDonation) {
-    //     res.json(dbDonation);
-    //   });
+    //   db.Donation.findById({ where: {id: req.params.id} }).then(data=>res.json(data));
     // });
 
+    app.get("/api/donations/id/:id", function(req, res) {
+      console.log("this should be a item ID "+ req.params.id);
+      //console.log(req.body);
+      db.Donation.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbDonation) {
+        res.json(dbDonation);
+      });
+    });
+
     // PUT route for updating Donation
-    app.put("/api/donations/:id", function(req, res) {
+    app.put("/api/donations/id/:id", function(req, res) {
       // console.log(req.params.id);
       // console.log(req.body);
       db.Donation.update({
