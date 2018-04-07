@@ -38,13 +38,10 @@ module.exports = function(app) {
     });
 
     // GET route for returning all Donations by category
-    app.get("/api/donations/:item_categoryID", function(req, res) {
+    app.get("/api/donations/item_categoryID/:item_categoryID", function(req, res) {
       db.Donation.findAll({
         where: {
-
-          //item_categoryID: 2
           item_categoryID: req.params.item_categoryID
-          //uid: req.user.id
 
         }
       })
@@ -121,7 +118,7 @@ module.exports = function(app) {
   //=============orgs can search donations by category=================
   //===================================================================
   // GET route for returning all Donations by category
-  app.get("/api/donations/item_categoryID/:item_categoryID", function(req, res) {
+  app.get("/api/donations/:item_categoryID", function(req, res) {
     db.Donation.findAll({
       where: {
         //item_categoryID: 2

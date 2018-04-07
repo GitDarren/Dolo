@@ -27,7 +27,7 @@ $(document).ready(function () {
   // This function handles reloading new donations when category changes
     function handleDonationCategoryChange() {
       var newDonationCategory = parseInt(($(this).val()));
-      console.log("is this a category? " +  parseInt(($(this).val())));
+      console.log("this is the item_categoryID from the select " +  parseInt(($(this).val())));
       getDonations(newDonationCategory);
     }
 
@@ -70,7 +70,7 @@ $(document).ready(function () {
   //===========================================
   function createNewDonationRow(donation) {
     console.log("donation object " + donation.name);
-    console.log("donation id " + donation.item_categoryID);
+    console.log("donation item_categoryID " + donation.item_categoryID);
 
      var $newDonationRow =  $('#available-donations-container').append(`
           <article class="media">
